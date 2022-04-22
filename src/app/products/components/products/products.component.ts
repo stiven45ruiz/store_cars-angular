@@ -19,11 +19,11 @@ export class ProductsComponent implements OnInit {
     this.fetchProducts();
   }
 
-  clickProduct(id: number) {
+  clickProduct(id: string) {
     console.log('product');
     console.log(id);
   }
-  
+
   fetchProducts() {
     this.productsService.getAllProducts()
     .subscribe(products =>{

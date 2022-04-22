@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  urlAPI: 'https://platzi-store.herokuapp.com',
+  urlAPI: 'http://localhost:3090/api/cars',
   firebaseConfig: {
     apiKey: "AIzaSyAqpzKPeExK1fRKk1cP_WiasuOPawgMwv0",
     authDomain: "my-first-store-d5e16.firebaseapp.com",

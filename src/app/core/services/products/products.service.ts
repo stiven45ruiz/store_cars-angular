@@ -5,6 +5,8 @@ import { Product } from '../../models/product.model';
 
 import { environment } from './../../../../environments/environment'
 
+import { Observable } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -13,16 +15,15 @@ export class ProductsService {
   products: Product[]= [];
 
   constructor(
-    private http: HttpClient
-  ) { 
-    
-  }
+    private http: HttpClient){}
 
-  getAllProducts(){
+
+  getAllProducts():Observable<any>{
+    console.log(`${environment.urlAPI}/products`)
     return this.http.get<Product[]>(`${environment.urlAPI}/products`);
   }
   getProduct(id: string){
-    return this.http.get<Product>(`${environment.urlAPI}/products/${id}`);
+    return this.http.get<Product[]>(`${environment.urlAPI}/products/${id}`);
   }
 
   createProduct(product: Product){

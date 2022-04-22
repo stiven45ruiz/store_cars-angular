@@ -1,16 +1,15 @@
-<div *ngIf="product">
-    <div>
-        <img [src]="product.image" alt="">
+<div class="Detailproduct" *ngFor="let data of product">
+    <div class="Detailproduct__image">
+        <img [src]="data.image" alt="">
     </div>
-    <div>
+    <div class="Detailproduct__infoProduct">
         <ul>
-            <li>Nombre: {{product.title}}</li>
-            <li>Precio: {{product.price | currency}}</li>
+            <li>{{data.title}}</li>
+            <li>{{data.price | currency}}</li>
         </ul>
-        <p>{{product.description}}</p>
+        <p>Tipo: {{data.typeCar | uppercase}}</p>
+        <p>{{data.description}}</p>
     </div>
-    <button (click)="createProduct()">Crear</button>
-    <button (click)="updateProduct()">Update</button>
-    <button (click)="deleteProduct()">Delete</button>
+
 </div>
-    
+<button (click)="addCart()" mat-raised-button color="primary">Agregar al carrito</button>
