@@ -27,7 +27,7 @@ export class ProductsService {
   }
 
   createProduct(product: Product){
-    return this.http.post(`${environment.urlAPI}/products`, product);
+    return this.http.post(`${environment.urlAPI}/product`, product);
   }
 
   updateProduct(id: string, changes: Partial<Product>){

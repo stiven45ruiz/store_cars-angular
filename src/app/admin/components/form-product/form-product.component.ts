@@ -41,11 +41,12 @@ export class FormProductComponent implements OnInit {
     this.form = this.formBuilder.group({
       id: ['',[Validators.required]],
       title: ['',[Validators.required]],
+      image: ['',[Validators.required]],
       price: ['',[Validators.required, MyValidator.isPriceValid]],
-      image: [''],
       description: ['',[Validators.required]],
-    });   
-  } 
+      typeCar:['',[Validators.required]],
+    });
+  }
   get priceField(){
     return this.form.get('price');
   }

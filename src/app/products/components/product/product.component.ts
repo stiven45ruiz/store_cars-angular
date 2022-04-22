@@ -25,7 +25,7 @@ export class ProductComponent implements OnInit, DoCheck{
     @Output() productClicked: EventEmitter<any> = new EventEmitter();
 
     today =new Date();
-    
+
     constructor(
         private cartService: CartService
     ){
@@ -38,21 +38,21 @@ export class ProductComponent implements OnInit, DoCheck{
     // }
 
     ngOnInit(){
-        console.log('3. ngOnInt')
+        // console.log('3. ngOnInt')
     }
-    
+
     ngDoCheck(){
-        console.log('4. ngDoCheck')
+        // console.log('4. ngDoCheck')
     }
 
     ngOnDestroy(){
-        console.log('5. ngOnDestroy')   
+        // console.log('5. ngOnDestroy')
     }
 
     addCart(){
         this.cartService.addCart(this.product);
 
-        
+
         console.log('Añadir al carrito');
         this.productClicked.emit(this.product.id)
     }
