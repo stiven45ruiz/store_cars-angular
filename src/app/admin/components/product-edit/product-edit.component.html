@@ -8,12 +8,22 @@
                 </mat-form-field>
             </div>
             <div class="row">
+              <mat-form-field class="col-xs">
+                  <input placeholder="URL Image" formControlName="image" matInput type="url">
+              </mat-form-field>
+            </div>
+            <div class="row">
+              <mat-form-field class="col-xs">
+                  <input placeholder="Type car" formControlName="typeCar" value="holaa" matInput type="text">
+              </mat-form-field>
+            </div>
+            <div class="row">
                 <mat-form-field class="col-xs">
                     <input placeholder="Price" formControlName="price" matInput type="number">
                     <mat-error *ngIf="priceField.errors && priceField.dirty" >
                         <mat-error *ngIf="priceField.hasError('price_invalid')">No te debes pasar de 500.000</mat-error>
                     </mat-error>
-                    
+
                 </mat-form-field>
             </div>
             <div class="row">
@@ -26,5 +36,5 @@
             <button [disabled]="form.invalid" mat-raised-button type="submit" color="primary">Save</button>
         </mat-card-actions>
     </mat-card>
-    
+
 </form>

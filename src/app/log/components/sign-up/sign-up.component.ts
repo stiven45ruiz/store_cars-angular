@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl,  Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl,  Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import {UsersService} from '../../../core/services/users/users.service'
 
 @Component({
   selector: 'app-sign-up',
@@ -7,43 +9,43 @@ import { FormControl,  Validators } from '@angular/forms';
   styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent implements OnInit {
-  emailField: FormControl;
-  passwordField: FormControl;
-  nameField: FormControl;
 
-  constructor() { 
-    this.emailField = new FormControl('',[
-      Validators.required,
-      Validators.email
-    ]);
-    this.emailField.valueChanges
-    .subscribe(value =>{
-      console.log(value);
-    });
+  formSignUp: FormGroup;
 
-    this.passwordField = new FormControl('',[
-      Validators.required
-    ]);
-    this.passwordField.valueChanges
-    .subscribe(value =>{
-      console.log(value);
-    });
+  constructor(
+    private formBuilder: FormBuilder,
+    private UsersService: UsersService,
+    private router: Router
+  ) {
+    this.buildForm();
 
-    this.nameField = new FormControl('',[
-      Validators.required
-    ]);
-    this.nameField.valueChanges
-    .subscribe(value =>{
-      console.log(value);
-    })
   }
 
   ngOnInit(): void {
   }
-  signUp(){
-    if(this.emailField.value){
-      console.log(this.emailField.value)
+
+
+
+  signUp(event:Event){
+    console.log("sign")
+    event.preventDefault();
+    if(this.formSignUp.valid){
+      const user = this.formSignUp.value;
+
+      this.UsersService.newUser(user)
+      .subscribe((newUser) =>{
+        console.log(newUser);
+        this.router.navigate(['./home']);
+      });
     }
+  }
+
+  private buildForm(){
+    this.formSignUp = this.formBuilder.group({
+      name: ['',[Validators.required]],
+      email: ['',[Validators.required, Validators.email]],
+      password: ['',[Validators.required]],
+    });
   }
 
 }

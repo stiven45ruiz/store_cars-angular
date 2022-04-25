@@ -28,13 +28,15 @@ export class ProductEditComponent implements OnInit {
   ngOnInit(){
     this.activeRoute.params.subscribe((params: Params) => {
       this.id = params['id'];
+      console.log(this.id)
       this.productsService.getProduct(this.id)
       .subscribe(product =>{
         this.form.patchValue(product);
+        console.log(product)
       });
-      
+
     });
-    
+
   }
   saveProduct(event:Event){
     event.preventDefault();
@@ -46,6 +48,7 @@ export class ProductEditComponent implements OnInit {
 
         this.router.navigate(['./admin/inventory']);
       });
+
     }
   }
 
@@ -53,10 +56,11 @@ export class ProductEditComponent implements OnInit {
     this.form = this.formBuilder.group({
       title: ['',[Validators.required]],
       price: ['',[Validators.required, MyValidator.isPriceValid]],
-      image: [''],
+      image: ['',[Validators.required]],
+      typeCar: ['',[Validators.required]],
       description: ['',[Validators.required]],
-    });   
-  } 
+    });
+  }
   get priceField(){
     return this.form.get('price');
   }
