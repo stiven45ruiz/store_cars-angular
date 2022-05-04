@@ -5,6 +5,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { MyValidator } from './../../../utils/validators'
 
 import { ProductsService } from './../../../core/services/products/products.service';
+import { Product } from 'src/app/core/models/product.model';
 
 @Component({
   selector: 'app-product-edit',
@@ -13,8 +14,10 @@ import { ProductsService } from './../../../core/services/products/products.serv
 })
 export class ProductEditComponent implements OnInit {
 
+  product: Product;
   form: FormGroup;
   id: string;
+  title: string = '';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -31,12 +34,16 @@ export class ProductEditComponent implements OnInit {
       console.log(this.id)
       this.productsService.getProduct(this.id)
       .subscribe(product =>{
-        this.form.patchValue(product);
-        console.log(product)
+        this.product = product[0]
+        //this.form.get('product').patchValue(product);
+        this.form.get('title').setValue(this.product.title);
+        this.form.get('image').setValue(this.product.image);
+        this.form.get('price').setValue(this.product.price);
+        this.form.get('description').setValue(this.product.description);
+        this.form.get('typeCar').setValue(this.product.typeCar);
       });
 
     });
-
   }
   saveProduct(event:Event){
     event.preventDefault();
@@ -64,5 +71,4 @@ export class ProductEditComponent implements OnInit {
   get priceField(){
     return this.form.get('price');
   }
-
 }

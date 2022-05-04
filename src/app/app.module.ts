@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { FirestoreModule } from '@angular/fire/firestore';
+import { CookieService } from 'ngx-cookie-service';
 
 import { CartComponent } from './cart/cart.component';
 import { DemoComponent } from './demo/demo.component';
@@ -36,7 +37,9 @@ import { environment } from 'src/environments/environment';
     HttpClientModule,
     FirestoreModule,
   ],
-  providers: [],
+  providers: [
+    CookieService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

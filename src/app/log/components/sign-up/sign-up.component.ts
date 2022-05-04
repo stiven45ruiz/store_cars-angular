@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl,  Validators } from '@angular/forms';
+import { FormBuilder, FormGroup,  Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import {UsersService} from '../../../core/services/users/users.service'
 
@@ -35,7 +35,7 @@ export class SignUpComponent implements OnInit {
       this.UsersService.newUser(user)
       .subscribe((newUser) =>{
         console.log(newUser);
-        this.router.navigate(['./home']);
+        this.router.navigate(['./signin']);
       });
     }
   }

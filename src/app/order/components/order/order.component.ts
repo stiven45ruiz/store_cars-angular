@@ -17,18 +17,20 @@ export class OrderComponent implements OnInit {
 
   constructor(
     private cartService: CartService
-  ) { 
+  ) {
     this.products$ = this.cartService.cart$ ;
     console.log(this.products$)
 
     this.cartService.cart$.pipe(map((products:[]) => {
       const distintos = [...new Set(products)];
       return distintos;
+
     }));
 
   }
 
   ngOnInit(): void {
+    
   }
 
 }

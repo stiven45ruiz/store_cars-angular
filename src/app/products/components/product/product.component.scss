@@ -20,9 +20,18 @@ img{
       object-position: center;
     }
   }
-// .price-cart{
-//     strong{
-//         font-size: 18px;
-//     }
-   
-// }
+
+.price-cart{
+  font-size: 18px;
+  font-weight: 600;
+  color: #98ca3f;
+}
+mat-card-actions{
+  .view-detail:hover{
+    color: #98ca3f;
+  }
+  .addToCart:hover{
+    transform: rotate(2deg);
+    transition: .2s;
+  }
+}

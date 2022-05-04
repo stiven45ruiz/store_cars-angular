@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl,  Validators } from '@angular/forms';
+import { FormControl, FormBuilder, FormGroup,  Validators } from '@angular/forms';
+import {UsersService} from '../../../core/services/users/users.service'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-in',
@@ -7,34 +9,43 @@ import { FormControl,  Validators } from '@angular/forms';
   styleUrls: ['./sign-in.component.scss']
 })
 export class SignInComponent implements OnInit{
+
+  formSignIn: FormGroup;
   emailField: FormControl;
   passwordField: FormControl;
 
-  constructor() {
-    this.emailField = new FormControl('',[
-      Validators.required,
-      Validators.email
-    ]);
-    this.emailField.valueChanges
-    .subscribe(value =>{
-      console.log(value);
-    });
-
-    this.passwordField = new FormControl('',[
-      Validators.required
-    ]);
-    this.passwordField.valueChanges
-    .subscribe(value =>{
-      console.log(value);
-    })
+  constructor(
+    private formBuilder: FormBuilder,
+    private UsersService: UsersService,
+    private router: Router
+  ) {
+    this.buildForm();
    }
 
   ngOnInit(): void {
-    
+
   }
-  signIn(){
-    if(this.emailField.value){
-      console.log(this.emailField.value)
-    }
+  signIn(event:Event){
+      const user = this.formSignIn.value
+      this.UsersService.login(user).subscribe((res: any) => {
+      this.router.navigate(['profile']);
+      localStorage.setItem('auth_token', res.token);
+    });
+  }
+
+  logout() {
+    localStorage.removeItem('token');
+  }
+
+  public get logIn(): boolean {
+    return (localStorage.getItem('token') !== null);
+  }
+
+
+  private buildForm(){
+    this.formSignIn = this.formBuilder.group({
+      email: ['',[Validators.required, Validators.email]],
+      password: ['',[Validators.required]],
+    });
   }
 }

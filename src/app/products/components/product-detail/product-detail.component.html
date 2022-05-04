@@ -7,9 +7,9 @@
             <li>{{data.title}}</li>
             <li>{{data.price | currency}}</li>
         </ul>
-        <p>Tipo: {{data.typeCar | uppercase}}</p>
-        <p>{{data.description}}</p>
+        <p class="Detailproduct__type"> <strong>Tipo:</strong> {{data.typeCar | uppercase}}</p>
+        <p class="Detailproduct__description">{{data.description}}</p>
     </div>
 
 </div>
-<button (click)="addCart()" mat-raised-button color="primary">Agregar al carrito</button>
+<button class="scale-up-center" (click)="addCart()" mat-raised-button color="primary">Agregar al carrito</button>

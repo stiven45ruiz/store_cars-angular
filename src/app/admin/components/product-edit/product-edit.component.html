@@ -4,7 +4,7 @@
         <mat-card-content>
             <div class="row">
                 <mat-form-field class="col-xs">
-                    <input placeholder="Title" formControlName="title" matInput type="text">
+                    <input placeholder="Title" formControlName="title" value="{{title}}" matInput type="text">
                 </mat-form-field>
             </div>
             <div class="row">
@@ -21,7 +21,7 @@
                 <mat-form-field class="col-xs">
                     <input placeholder="Price" formControlName="price" matInput type="number">
                     <mat-error *ngIf="priceField.errors && priceField.dirty" >
-                        <mat-error *ngIf="priceField.hasError('price_invalid')">No te debes pasar de 500.000</mat-error>
+                        <mat-error *ngIf="priceField.hasError('price_invalid')">No te debes pasar de 10.000.000</mat-error>
                     </mat-error>
 
                 </mat-form-field>
