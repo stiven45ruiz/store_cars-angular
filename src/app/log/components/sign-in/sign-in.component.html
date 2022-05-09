@@ -2,7 +2,7 @@
 <div class="box">
   <div class="form">
     <h3>Sign In</h3>
-  <form class="example-form">
+  <form class="example-form" [formGroup]="formSignIn"  (ngSubmit)="signIn($event)">
       <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Email</mat-label>
         <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com">

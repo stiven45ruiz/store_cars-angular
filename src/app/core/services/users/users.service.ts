@@ -19,14 +19,12 @@ export class UsersService {
   ) { }
 
   newUser(user: User){
-    return this.http.post(`${environment.urlAPI}/user`, user);
+    return this.http.post(`${environment.urlAPI}/signup`, user);
   }
 
   login(user: User){
-    return this.http.post(`${environment.urlAPI}/userPrueba`, user);
+    return this.http.post(`${environment.urlAPI}/login`, user);
   }
-
-  
 
   setToken(token: 'Any') {
     this.cookies.set("token", token);

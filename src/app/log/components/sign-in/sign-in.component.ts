@@ -26,7 +26,9 @@ export class SignInComponent implements OnInit{
 
   }
   signIn(event:Event){
+      console.log("signIn")
       const user = this.formSignIn.value
+      console.log(user)
       this.UsersService.login(user).subscribe((res: any) => {
       this.router.navigate(['profile']);
       localStorage.setItem('auth_token', res.token);

@@ -27,11 +27,11 @@ export class SignUpComponent implements OnInit {
 
 
   signUp(event:Event){
-    console.log("sign")
+    console.log("sign Up")
     event.preventDefault();
     if(this.formSignUp.valid){
       const user = this.formSignUp.value;
-
+      console.log(user)
       this.UsersService.newUser(user)
       .subscribe((newUser) =>{
         console.log(newUser);
