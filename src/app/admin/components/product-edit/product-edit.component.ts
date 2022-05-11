@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
-import { MyValidator } from './../../../utils/validators'
+import { MyValidator } from './../../../utils/validators';
 
 import { ProductsService } from './../../../core/services/products/products.service';
 import { Product } from 'src/app/core/models/product.model';
@@ -65,7 +65,7 @@ export class ProductEditComponent implements OnInit {
       price: ['',[Validators.required, MyValidator.isPriceValid]],
       image: ['',[Validators.required]],
       typeCar: ['',[Validators.required]],
-      description: ['',[Validators.required]],
+      description: ['',[Validators.required, Validators.maxLength(254)]],
     });
   }
   get priceField(){

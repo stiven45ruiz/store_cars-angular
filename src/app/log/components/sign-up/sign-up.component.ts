@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup,  Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import {UsersService} from '../../../core/services/users/users.service'
+import {UsersService} from '../../../core/services/users/users.service';
+import { MyValidator } from './../../../utils/validators';
 
 @Component({
   selector: 'app-sign-up',
@@ -11,11 +12,13 @@ import {UsersService} from '../../../core/services/users/users.service'
 export class SignUpComponent implements OnInit {
 
   formSignUp: FormGroup;
-
+  mensajeError : any;
   constructor(
     private formBuilder: FormBuilder,
     private UsersService: UsersService,
-    private router: Router
+    private router: Router,
+
+
   ) {
     this.buildForm();
 
@@ -36,6 +39,10 @@ export class SignUpComponent implements OnInit {
       .subscribe((newUser) =>{
         console.log(newUser);
         this.router.navigate(['./signin']);
+      },err => {
+        console.log(err)
+        this.mensajeError = err.error;
+
       });
     }
   }
@@ -44,7 +51,12 @@ export class SignUpComponent implements OnInit {
     this.formSignUp = this.formBuilder.group({
       name: ['',[Validators.required]],
       email: ['',[Validators.required, Validators.email]],
-      password: ['',[Validators.required]],
+      password: ['',[Validators.required, Validators.minLength(8)]],
+      confirmPassword: ['',[Validators.required]]
+
+    },
+    {
+      validator: MyValidator.isPasswordsMatch
     });
   }
 
