@@ -1,8 +1,10 @@
 
+<h3 *ngIf="parsedUser">Hola, {{parsedUser.name}}</h3>
+
 <div class="product-grid">
-  <app-product 
-    *ngFor="let product of products" 
-    (productClicked)="clickProduct($event)" 
+  <app-product
+    *ngFor="let product of products"
+    (productClicked)="clickProduct($event)"
     [product]="product">
   </app-product>
 </div>

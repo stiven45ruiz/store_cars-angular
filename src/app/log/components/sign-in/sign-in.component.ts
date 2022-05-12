@@ -11,8 +11,7 @@ import { Router } from '@angular/router';
 export class SignInComponent implements OnInit{
 
   formSignIn: FormGroup;
-  emailField: FormControl;
-  passwordField: FormControl;
+  mensajeError : any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -27,11 +26,18 @@ export class SignInComponent implements OnInit{
   }
   signIn(event:Event){
       console.log("signIn")
+      event.preventDefault();
       const user = this.formSignIn.value
       console.log(user)
       this.UsersService.login(user).subscribe((res: any) => {
-      this.router.navigate(['profile']);
+
+      this.router.navigate(['products']);
+      localStorage.setItem( 'user', JSON.stringify(res))
       localStorage.setItem('auth_token', res.token);
+    },err => {
+      console.log(err)
+      this.mensajeError = err.error;
+
     });
   }
 

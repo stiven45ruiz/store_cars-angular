@@ -10,6 +10,8 @@ import { ProductsService } from './../../../core/services/products/products.serv
 export class ProductsComponent implements OnInit {
 
   products: Product[] = [];
+  localStorageItem: any;
+  parsedUser:any;
 
   constructor(
     private productsService: ProductsService
@@ -17,7 +19,14 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit() {
     this.fetchProducts();
+
+    this.localStorageItem = localStorage.getItem('user');
+    this.parsedUser = JSON.parse(this.localStorageItem);
+
+    console.log("localS ",this.parsedUser)
   }
+
+
 
   clickProduct(id: string) {
     console.log('product');

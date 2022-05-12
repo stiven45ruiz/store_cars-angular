@@ -11,8 +11,9 @@
                 <mat-icon>shopping_cart</mat-icon>
                 Carrito
               </a>
-              <a mat-button class="login" routerLink="/signin" routerLinkActive="active">Sign in</a>
-              <a mat-button class="login" routerLink="/signup" routerLinkActive="active">Sign up</a>
+              <a *ngIf="!parsedUser" mat-button class="login" routerLink="/signin" routerLinkActive="active">Sign in</a>
+              <a *ngIf="!parsedUser" mat-button class="login" routerLink="/signup" routerLinkActive="active">Sign up</a>
+              <button *ngIf="parsedUser" mat-button routerLink="/" type="submit" id="logout" value="logout" onclick="">Logout</button>
             </nav>
         </div>
     </mat-toolbar-row>
