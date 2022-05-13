@@ -31,7 +31,8 @@ export class SignInComponent implements OnInit{
       console.log(user)
       this.UsersService.login(user).subscribe((res: any) => {
 
-      this.router.navigate(['products']);
+
+      this.router.navigateByUrl('products');
       localStorage.setItem( 'user', JSON.stringify(res))
       localStorage.setItem('auth_token', res.token);
     },err => {
@@ -39,6 +40,7 @@ export class SignInComponent implements OnInit{
       this.mensajeError = err.error;
 
     });
+    window.location.reload();
   }
 
   logout() {

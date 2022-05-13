@@ -4,6 +4,7 @@
             <nav>
                 <a mat-button routerLink="/home" routerLinkActive="active">Home</a>
                 <a mat-button routerLink="/products" routerLinkActive="active">Products</a>
+
                 <a mat-button routerLink="/contact" routerLinkActive="active">Contact</a>
             </nav>
             <nav>
@@ -13,7 +14,7 @@
               </a>
               <a *ngIf="!parsedUser" mat-button class="login" routerLink="/signin" routerLinkActive="active">Sign in</a>
               <a *ngIf="!parsedUser" mat-button class="login" routerLink="/signup" routerLinkActive="active">Sign up</a>
-              <button *ngIf="parsedUser" mat-button routerLink="/" type="submit" id="logout" value="logout" onclick="">Logout</button>
+              <a *ngIf="parsedUser" mat-button href="/" id="logout" value="logout" (click)="logout()" type="submit">Logout</a>
             </nav>
         </div>
     </mat-toolbar-row>

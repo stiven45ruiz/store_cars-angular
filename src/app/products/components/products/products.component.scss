@@ -1,8 +1,35 @@
-h3{
-  font-size: 25px;
-  font-weight: 600;
-  margin: 20px 0;
+.greetings{
+  p{
+    font-size: 25px;
+    font-weight: 600;
+    margin: 20px 0;
+  }
+  img{
+    width: 100px;
+  }
 }
+.pleaseSign{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  p{
+    font-size: 20px;
+    font-weight: 400;
+    margin: 20px 0;
+    a{
+      text-decoration: none;
+      color: #98ca3f;
+    }
+    a:hover{
+      text-decoration: underline;
+    }
+  }
+  img{
+    width: 100px;
+  }
+}
+
+
 .product-grid{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));

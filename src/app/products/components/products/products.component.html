@@ -1,5 +1,11 @@
-
-<h3 *ngIf="parsedUser">Hola, {{parsedUser.name}}</h3>
+<section *ngIf="parsedUser" class="greetings">
+  <p>Hola, {{parsedUser.name}}</p>
+  <img src="https://cdn-icons-png.flaticon.com/512/6195/6195676.png" alt="" srcset="">
+</section>
+<section *ngIf="!parsedUser" class="pleaseSign">
+  <p>Hello, please <a routerLink="/signin">Sign In</a> for a more personalized experience</p>
+  <img src="https://cdn-icons-png.flaticon.com/512/4456/4456863.png" alt="" srcset="">
+</section>
 
 <div class="product-grid">
   <app-product

@@ -18,6 +18,7 @@ export class ProductsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
     this.fetchProducts();
 
     this.localStorageItem = localStorage.getItem('user');

@@ -31,8 +31,8 @@ export class HeaderComponent implements OnInit {
     this.localStorageItem = localStorage.getItem('user');
     this.parsedUser = JSON.parse(this.localStorageItem);
 
-    this.a = document.getElementById('logout');
-    this.a.onclick = this.logout();
+    // this.a = document.getElementById('logout');
+    // this.a.onclick = this.logout();
   }
   logout() {
     console.log("logout")
