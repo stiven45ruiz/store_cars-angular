@@ -16,6 +16,8 @@ import { LayoutComponent } from './layout/layout.component';
 import { SharedModule} from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokeInterceptorService } from './core/services/token/toke-interceptor.service';
 
 import { environment } from 'src/environments/environment';
 
@@ -38,7 +40,12 @@ import { environment } from 'src/environments/environment';
     FirestoreModule,
   ],
   providers: [
-    CookieService
+    CookieService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokeInterceptorService,
+      multi:true
+    }
   ],
   bootstrap: [AppComponent]
 })

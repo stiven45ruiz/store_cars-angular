@@ -22,6 +22,7 @@ import { MaterialModule } from './../material/material.module';
         SharedModule,
         MaterialModule,
     ]
+
 })
 export class ProductsModule{
 

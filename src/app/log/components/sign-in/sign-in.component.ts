@@ -29,18 +29,20 @@ export class SignInComponent implements OnInit{
       event.preventDefault();
       const user = this.formSignIn.value
       console.log(user)
+
       this.UsersService.login(user).subscribe((res: any) => {
-
-
-      this.router.navigateByUrl('products');
-      localStorage.setItem( 'user', JSON.stringify(res))
+        console.log(res)
+      localStorage.setItem( 'user', JSON.stringify(res));
       localStorage.setItem('auth_token', res.token);
+      this.router.navigate(['products']);
+
     },err => {
       console.log(err)
       this.mensajeError = err.error;
 
     });
-    window.location.reload();
+
+
   }
 
   logout() {

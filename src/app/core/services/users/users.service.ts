@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpContext} from '@angular/common/http';
 import { CookieService } from "ngx-cookie-service";
 import { User } from '../../models/user.model';
 
 import { environment } from './../../../../environments/environment'
 
 import { Observable } from 'rxjs';
+import { BYPASS_JW_TOKEN } from '../token/toke-interceptor.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,9 @@ export class UsersService {
   ) { }
 
   newUser(user: User){
-    return this.http.post(`${environment.urlAPI}/signup`, user);
+    return this.http.post(`${environment.urlAPI}/signup`,user,{
+      context: new HttpContext().set(BYPASS_JW_TOKEN, true),
+    });
   }
 
   login(user: User){
