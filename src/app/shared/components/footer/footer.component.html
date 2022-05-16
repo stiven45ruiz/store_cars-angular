@@ -18,7 +18,7 @@
             </ul>
         </div>
         <div>
-            <h3>Contacto</h3>
+            <h3 id="contacto" name="contacto">Contacto</h3>
             <form class="example-form">
                 <mat-form-field class="example-full-width" appearance="fill">
                   <mat-label>Email</mat-label>
@@ -31,7 +31,7 @@
                   </mat-error>
                 </mat-form-field>
             </form>
-              
+
             <button mat-raised-button [disabled]="emailField.invalid" (click)="sendMail">Enviar</button>
         </div>
     </div>

@@ -5,9 +5,20 @@
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item routerLink="create">New product</a>
-      <a mat-list-item routerLink="inventory">Inventory</a>
-      <a mat-list-item routerLink="dashboard">Dashboard</a>
+      <a mat-list-item color="primary" routerLink="/">
+        <mat-icon aria-hidden="false" aria-label="Example home icon">home </mat-icon> Home
+      </a>
+      <a mat-list-item color="primary" routerLink="create">
+        <mat-icon aria-hidden="false" aria-label="Example home icon">add </mat-icon>  New product
+      </a>
+      <a mat-list-item routerLink="inventory">
+        <mat-icon aria-hidden="false" aria-label="Example home icon">library_books </mat-icon> Inventory
+      </a>
+      <a mat-list-item routerLink="dashboard">
+        <mat-icon aria-hidden="false" aria-label="Example home icon">timeline </mat-icon> Dashboard
+
+      </a>
+
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -22,7 +33,8 @@
       </button>
       <span>Auto shop managment</span>
     </mat-toolbar>
-    <!-- Add Content Here -->
+    <p class="text-admin">Here you can manage the products of the store</p>
+
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

@@ -1,7 +1,18 @@
-<div class="swiper-container">
-    <div class="swiper-wrapper">
-        <div class="swiper-slide" *ngFor="let img of images">
-            <img [src]="img" alt="Banner image">
-        </div>
-    </div>
-</div>
+
+<swiper
+    [slidesPerView]="1"
+    [spaceBetween]="30"
+    [loop]="true"
+    [pagination]="{
+      clickable: true
+    }"
+    [navigation]="true"
+    [autoplay]="{
+      delay: 3000
+    }"
+    class="mySwiper"
+>
+  <ng-template swiperSlide class="swiper-slide" *ngFor="let img of images">
+    <img  [src]="img" alt="Banner image">
+  </ng-template>
+</swiper>

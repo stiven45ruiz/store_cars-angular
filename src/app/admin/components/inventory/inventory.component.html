@@ -1,4 +1,4 @@
-<a mat-raised-button routerLink="create">Crear nuevo producto</a>
+<a class="button-create" mat-raised-button color="primary" routerLink="create">Crear nuevo producto</a>
 <div class="mat-elevation-z8">
   <table [dataSource]="products" mat-table class="full-width-table" matSort aria-label="Elements">
     <!-- Id Column -->
@@ -22,8 +22,12 @@
     <ng-container matColumnDef="action">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
       <td mat-cell *matCellDef="let product">
-        <a mat-raised-button color="primary"  [routerLink]="['edit', product.id]">Editar</a>
-        <button mat-raised-button color="warn" (click)="deleteProduct(product.id)">Eliminar</button>
+        <button mat-raised-button color="primary"  [routerLink]="['edit', product.id]">
+          <mat-icon aria-hidden="false" aria-label="Example home icon">edit</mat-icon>
+        </button>
+        <button mat-raised-button color="warn" (click)="deleteProduct(product.id)">
+          <mat-icon aria-hidden="false" aria-label="Example home icon">delete</mat-icon>
+        </button>
       </td>
     </ng-container>
 
