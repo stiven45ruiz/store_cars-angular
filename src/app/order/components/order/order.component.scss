@@ -8,7 +8,7 @@
 }
 .rowOrder{
   &__image{
-    width: 80%;
+    width: 40%;
   }
   &__title{
     font-size: 18px;
@@ -28,12 +28,21 @@
 }
 
 .totalPriceOrder{
+  margin: 10px;
   font-size: 20px;
+  color: #353535;
+  strong{
+    padding: 0 5px;
+  }
 }
 .buttonNext{
   margin: 40px 0 0 0;
   background-color: #98ca3f;
   color: white;
+}
+.dataform{
+  display: flex;
+  flex-direction: column;
 }
 
 @-webkit-keyframes tracking-in-expand {

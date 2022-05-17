@@ -2,12 +2,12 @@
     <mat-step >
         <ng-template  matStepLabel>Orden</ng-template>
         <div *ngIf="(products$ | async) as products">
-            <div class="noProducts" *ngIf="products.length === 0">
+            <div class="noProducts" *ngIf="parsedCart.length === 0">
               <p>No hay productos en tu carrito</p>
               <p>Agrega Productos a tu carrito</p>
 
             </div>
-            <div class="row rowOrder" *ngFor="let product of products | groupOrder: 'id'">
+            <div class="row rowOrder" *ngFor="let product of parsedCart | groupOrder: 'id'">
                 <div class="col-xs-12 col-sm-3 col-md-3">
                     <div class="box rowOrder__image">
                         <img class="image" [src]="product.image" alt="">
@@ -38,10 +38,10 @@
                 </div>
             </div>
             <div class="row totalPriceOrder">
-              Total Por: $$$
+              Total Por: <strong>{{ totalPrice | currency}}</strong>
             </div>
           <div>
-              <button [disabled]="products.length === 0" class="buttonNext" mat-button matStepperNext>Next</button>
+              <button [disabled]="parsedCart.length === 0" class="buttonNext" mat-button matStepperNext>Next</button>
           </div>
         </div>
 
@@ -49,10 +49,41 @@
 
     <mat-step>
         <ng-template matStepLabel>Datos Personales</ng-template>
-        <h3>contenido</h3>
+
+
+        <form class="dataform" FormGroup="formPersonalData" >
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Email</mat-label>
+            <input
+              type="email"
+              matInput
+              formControlName="email"
+              placeholder="Ex. pat@example.com"
+              style="text-transform:lowercase;"
+              >
+
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Full Name</mat-label>
+              <input type="password" matInput formControlName="password">
+
+          </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Address</mat-label>
+            <input type="text" matInput formControlName="password">
+
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>City</mat-label>
+          <input type="text" matInput formControlName="password">
+
+      </mat-form-field>
+
+      </form>
 
         <div>
-          <button mat-button matStepperNext>Next</button>
+          <button class="buttonNext" mat-button matStepperNext>Next</button>
       </div>
     </mat-step>
 
@@ -61,7 +92,7 @@
         <h3>contenido</h3>
 
         <div>
-          <button mat-button matStepperNext>Next</button>
+          <button class="buttonNext" mat-button matStepperNext>Pay</button>
       </div>
     </mat-step>
 </mat-horizontal-stepper>

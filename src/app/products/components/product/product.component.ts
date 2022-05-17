@@ -29,7 +29,7 @@ export class ProductComponent implements OnInit, DoCheck{
     constructor(
         private cartService: CartService
     ){
-        console.log('1. constructor');
+
     }
 
     // ngOnChanges(changes: SimpleChanges){
@@ -53,7 +53,8 @@ export class ProductComponent implements OnInit, DoCheck{
         this.cartService.addCart(this.product);
 
 
-        console.log('Añadir al carrito');
-        this.productClicked.emit(this.product.id)
+        // console.log('Añadir al carrito');
+        // this.productClicked.emit(this.product.id);
+
     }
 }

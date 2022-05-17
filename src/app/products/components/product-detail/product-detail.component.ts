@@ -1,9 +1,14 @@
 import {
   Component,
-  OnInit,
   Input,
   Output,
-  EventEmitter,} from '@angular/core';
+  OnChanges,
+  SimpleChanges,
+  OnInit,
+  DoCheck,
+  OnDestroy,
+  EventEmitter,
+} from '@angular/core';
 import { ActivatedRoute, Params} from '@angular/router';
 
 import { ProductsService } from '../../../core/services/products/products.service';
@@ -16,9 +21,13 @@ import { CartService } from '../../../core/services/cart/cart.service';
   styleUrls: ['./product-detail.component.scss']
 })
 export class ProductDetailComponent implements OnInit {
+
+  @Input() productCart: Product;
   @Output() productClicked: EventEmitter<any> = new EventEmitter();
 
-  product: Product[] = [];
+
+
+  productDetail: Product[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -32,18 +41,14 @@ export class ProductDetailComponent implements OnInit {
       const id = params['id'];
 
       this.productsService.getProduct(id).subscribe((res) => {
-      this.product = res;
+      this.productDetail = res;
       });
     });
   }
 
   addCart(){
-    this.route.params.subscribe((params: Params) =>{
-      const id = params['id'];
-      this.cartService.addCart(id);
-      console.log('Añadir al carrito');
-      this.productClicked.emit(id)
-    });
+    this.cartService.addCart(this.productCart);
+
   }
 
 

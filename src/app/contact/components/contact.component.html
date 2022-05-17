@@ -1,1 +1,49 @@
-<p>contact works!</p>
+<div class="contact">
+  <section class="contact__section">
+    <p>Contact Us</p>
+  </section>
+
+  <section class="contact__section">
+
+    <form class="example-form" [formGroup]="formContact" class="contact__section__form" (ngSubmit)="send()">
+      <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Name</mat-label>
+          <input type="text" matInput formControlName="name">
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill">
+
+        <mat-label>Email</mat-label>
+        <input
+          type="email"
+          matInput
+          formControlName="email"
+          placeholder="Ex. pat@example.com"
+          style="text-transform:lowercase;"
+          >
+        <mat-error *ngIf="formContact">
+          Please enter a valid email address
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Comment or message</mat-label>
+          <textarea type="text" matInput formControlName="textArea"></textarea>
+          <mat-error *ngIf="formContact.hasError('required')">
+            Message<strong>required</strong>
+          </mat-error>
+
+      </mat-form-field>
+
+
+      <!-- <mat-error *ngIf="mensajeError">
+        !Sorry¡ but <strong>{{ mensajeError }}</strong>
+      </mat-error> -->
+      <button
+        mat-raised-button
+        [disabled]="formContact.invalid"
+        type="submit"
+        color="primary"
+        >Send</button>
+    </form>
+  </section>
+</div>

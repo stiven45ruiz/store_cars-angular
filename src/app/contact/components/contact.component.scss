@@ -1,0 +1,21 @@
+.contact{
+
+  &__section:first-child{
+    background-image: url('https://wallpaperforu.com/wp-content/uploads/2020/07/car-wallpaper-20072612242432-1536x648.jpg');
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position: center;
+    height: 300px;
+  }
+  &__section{
+    display: flex;
+    flex-direction: column;
+    &__form{
+      display: flex;
+      flex-direction: column;
+      button{
+        width: 100px;
+      }
+    }
+  }
+}
